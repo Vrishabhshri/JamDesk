@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ListItemOptions.css';
 
 const ListItemOptions = () => {
+
+    const [clicked, setClicked] = useState(null);
+
+    const handleMouseDown = (index) => {
+
+        setClicked(index);
+
+    }
+
+    const handleMouseUp = () => {
+
+        setClicked(null);
+
+    }
+
+    const options = ['Open', 'Delete', 'Add to Folder'];
 
     return (
 
         <div className='list-item-options'>
 
-            <div className='option-choice'>Open</div>
-            <div className='option-choice'>Delete</div>
-            <div className='option-choice'>Add to Folder</div>
+            {options.map((option, index) => (
+
+                <div
+                    key={index}
+                    className={`option-choice ${clicked === index ? 'clicked' : ''}`}
+                    onMouseDown={() => handleMouseDown(index)}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}>
+                    {option}
+                </div>
+
+            ))}
 
         </div>
 

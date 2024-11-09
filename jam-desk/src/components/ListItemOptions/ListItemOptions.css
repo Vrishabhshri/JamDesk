@@ -24,4 +24,18 @@
 
     line-height: 40px;
 
+    transition-duration: 0.4s;
+
+}
+
+.option-choice:hover {
+
+    transform: scale(1.08);
+
+}
+
+.option-choice.clicked {
+
+    background-color: white;
+
 }
