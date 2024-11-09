@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Monkey';
+    src: url('./media/HappyMonkey-Regular.ttf');
+}
+
 body {
 
     margin: 0;
@@ -12,7 +17,9 @@ body {
     height: 100%;
     width: 100%;
 
-    background-color: black;
+    background: linear-gradient(135deg, black, #06D6A0);
     color: white;
+
+    font-family: Monkey;
     
 }

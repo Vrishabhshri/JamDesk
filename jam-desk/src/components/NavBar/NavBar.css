@@ -10,9 +10,19 @@
 .icon {
 
     background-image: url('./IMG_0141.jpg');
+
     width: 50px; /* Set width and height to see the image */
     height: 50px;
+
     background-size: cover;
     background-image: center;
+
+    transition-duration: 0.3s;
+
+}
+
+.icon:hover {
+
+    transform: scale(1.1);
 
 }

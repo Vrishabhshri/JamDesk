@@ -8,6 +8,11 @@ const HomePage = () => {
     <div className='HomePage'>
 
         <Header />
+        <div className='slogan'>
+
+            A new space for your innovation
+
+        </div>
 
     </div>
 

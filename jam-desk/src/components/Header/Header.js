@@ -7,7 +7,7 @@ const Header = () => {
 
     <div className='title'>
 
-        JamDesk
+      JamDesk
 
     </div>
 
