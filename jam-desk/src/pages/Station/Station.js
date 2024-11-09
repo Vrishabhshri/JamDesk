@@ -11,14 +11,11 @@ const Station = () => {
 
       <Header/>
 
-      <div className='files'>
-        Files
-      </div>
+      <div className='files'>Files</div>
       <List size="medium"/>
 
-      <div className='work-station'>
-        Station
-      </div>
+      <div className='work-station-title'>Station</div>
+      <div className='work-station'></div>
 
     </div>
 

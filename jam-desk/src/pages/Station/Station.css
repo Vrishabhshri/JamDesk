@@ -19,3 +19,21 @@
     height: 100px;
 
 }
+
+.work-station {
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    height: 500px;
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+
+    overflow-y: scroll;
+
+    margin-bottom: 20px;
+
+}
