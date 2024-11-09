@@ -1,28 +1,14 @@
 .HomePage {
 
-    border: 2px solid red;
+    /* border: 2px solid red; */
 
-    width: 100%;
-    height: 100%;
-
-}
-
-.page {
-
-    border: 2px solid green;
-
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* should be standard width and height for a page */
+    height: calc(100vh - 50px);
 
     display: flex;
     flex-direction: column;
 
     align-items: center;
-
-}
-
-.header-box {
-
-
+    justify-content: center;
 
 }
