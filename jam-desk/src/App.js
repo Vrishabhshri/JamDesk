@@ -4,7 +4,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import NavBar from './components/NavBar/NavBar';
 import Projects from './pages/Projects/Projects';
-
+import Station from './pages/Station/Station';
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
                 <Routes> 
                     <Route path="/" element={<HomePage />} />
                     <Route path="/projects" element={<Projects />} />
+                    <Route path="/station" element={<Station />} />
                 </Routes>
             </Router>
             

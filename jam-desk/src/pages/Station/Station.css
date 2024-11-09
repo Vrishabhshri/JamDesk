@@ -1,0 +1,21 @@
+.station {
+
+    /* border: 2px solid red; */
+
+    width: 100vw; /* should be standard width and height for a page */
+    height: calc(100vh - 50px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+.list {
+
+    height: 100px;
+
+}
