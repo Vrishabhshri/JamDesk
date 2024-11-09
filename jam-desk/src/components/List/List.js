@@ -7,7 +7,29 @@ const List = () => {
 
         <div className='list'>
 
-            
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
+            <div className='list-item'></div>
 
         </div>
     
