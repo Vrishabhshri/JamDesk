@@ -25,7 +25,7 @@ const Station = () => {
         
         <Header/>
         <List onSelectionChange={handleSelectionChange}/>
-        {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount} className={selectedCount > 0 ? 'visible' : ''}/>}
+        {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
     
     </div>
 

@@ -25,8 +25,6 @@ const ListItemOptions = ({ selectedCount }) => {
 
             {options.map((option, index) => {
 
-                console.log(option)
-
                 if (option === 'Open' && selectedCount > 1) return null;
 
                 return (
