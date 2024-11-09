@@ -1,0 +1,38 @@
+.list-item {
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    min-height: 60px;
+    width: 95%;
+
+    margin: 5px 0px;    
+
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.list-item::before {
+
+    content: ''; /* Required for the pseudo-element */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;  /* Start large so it expands */
+    height: 300%;
+    background: white;
+    border-radius: 50%; /* Make the background circular */
+    transform: translate(-50%, -50%) scale(0); /* Center and scale to 0 initially */
+    transition: transform 1s ease, opacity 0.6s ease; /* Smooth grow effect */
+    opacity: 0; /* Initially hidden */
+
+  }
+  
+  .list-item.clicked::before {
+
+    transform: translate(-50%, -50%) scale(1); /* Grow from center */
+    opacity: 1; /* Make the background visible */
+
+  }

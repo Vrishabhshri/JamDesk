@@ -1,4 +1,5 @@
 import React from 'react';
+import ListItem from '../ListItem/ListItem';
 import './List.css';
 
 const List = () => {
@@ -7,29 +8,27 @@ const List = () => {
 
         <div className='list'>
 
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
-            <div className='list-item'></div>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
+            <ListItem/>
 
         </div>
     
