@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import './ListItem.css';
 
-const ListItem = () => {
+const ListItem = ({ onSelectionChange }) => {
 
-    const [clicked, setClicked] = useState(false);
+    const [selected, setSelected] = useState(false);
 
-    const handleClick = () => {
+    const handleSelect = () => {
 
-        setClicked(!clicked)
+        setSelected(!selected)
+        onSelectionChange(!selected)
 
     };
 
     return (
 
-        <div className={`list-item ${clicked ? 'clicked' : ''}`} onClick={handleClick}> Song </div>
+        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> Song </div>
 
     )
 

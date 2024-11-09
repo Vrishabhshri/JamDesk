@@ -15,10 +15,14 @@
 }
 
 .list::-webkit-scrollbar {
+
     display: none; 
-  }
+
+}
   
-  .list {
+.list {
+
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
+    
+}

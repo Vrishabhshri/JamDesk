@@ -1,17 +1,26 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Title.css';
 
 const Title = () => {
 
-  return (
+    const navigate = useNavigate();
 
-    <div className='title'>
+    const handleOnClick = () => {
 
-      JamDesk
+        navigate('/station')
 
-    </div>
+    }
 
-  )
+    return (
+
+        <div className='title' onClick={handleOnClick}>
+
+            JamDesk
+
+        </div>
+
+    )
 
 }
 

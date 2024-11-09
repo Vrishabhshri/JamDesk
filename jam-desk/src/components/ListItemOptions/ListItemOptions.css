@@ -11,6 +11,14 @@
     align-items: center;   
     justify-content: space-around; 
 
+    opacity: 0;
+
+}
+
+.list-item-options.visible {
+
+    opacity: 1
+
 }
 
 .option-choice {

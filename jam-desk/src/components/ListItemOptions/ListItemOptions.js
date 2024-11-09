@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ListItemOptions.css';
 
-const ListItemOptions = () => {
+const ListItemOptions = ({ selectedCount }) => {
 
     const [clicked, setClicked] = useState(null);
 
@@ -23,18 +23,24 @@ const ListItemOptions = () => {
 
         <div className='list-item-options'>
 
-            {options.map((option, index) => (
+            {options.map((option, index) => {
 
-                <div
-                    key={index}
-                    className={`option-choice ${clicked === index ? 'clicked' : ''}`}
-                    onMouseDown={() => handleMouseDown(index)}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}>
-                    {option}
-                </div>
+                console.log(option)
 
-            ))}
+                if (option === 'Open' && selectedCount > 1) return null;
+
+                return (
+                    <div
+                        key={index}
+                        className={`option-choice ${clicked === index ? 'clicked' : ''}`}
+                        onMouseDown={() => handleMouseDown(index)}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}>
+                        {option}
+                    </div>
+                )
+
+            })}
 
         </div>
 
