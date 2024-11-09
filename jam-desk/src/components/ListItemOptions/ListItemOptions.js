@@ -1,4 +1,5 @@
 import React from 'react';
+import './ListItemOptions.css';
 
 const ListItemOptions = () => {
 
@@ -6,7 +7,7 @@ const ListItemOptions = () => {
 
         <div className='list-item-options'>
 
-            
+
 
         </div>
 

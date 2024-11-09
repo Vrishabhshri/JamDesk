@@ -2,6 +2,7 @@ import React from 'react';
 import './Station.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
+import ListItemOptions from '../../components/ListItemOptions/ListItemOptions';
 
 const Station = () => {
 
@@ -11,6 +12,7 @@ const Station = () => {
         
         <Header/>
         <List/>
+        <ListItemOptions/>
     
     </div>
 
