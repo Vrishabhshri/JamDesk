@@ -24,7 +24,7 @@ const Projects = () => {
     <div className='Projects'>
         
         <Header/>
-        <List onSelectionChange={handleSelectionChange}/>
+        <List onSelectionChange={handleSelectionChange} size="large"/>
         {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
     
     </div>

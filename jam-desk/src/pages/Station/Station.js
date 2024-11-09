@@ -14,10 +14,10 @@ const Station = () => {
       <div className='files'>
         Files
       </div>
-      <List/>
+      <List size="medium"/>
 
       <div className='work-station'>
-
+        Station
       </div>
 
     </div>

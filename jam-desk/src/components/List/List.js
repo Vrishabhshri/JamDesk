@@ -2,11 +2,11 @@ import React from 'react';
 import ListItem from '../ListItem/ListItem';
 import './List.css';
 
-const List = ({ onSelectionChange }) => {
+const List = ({ onSelectionChange, size }) => {
 
     return (
 
-        <div className='list'>
+        <div className={`list ${size}`}>
 
             {[...Array(20)].map((_, index) => (
 
