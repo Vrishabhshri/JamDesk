@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 const Header = () => {
+
   return (
+
     <div className='title'>
+
         JamDesk
+
     </div>
+
   )
+  
 }
 
-export default Header
+export default Header;
