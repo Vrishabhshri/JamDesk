@@ -13,3 +13,12 @@
     overflow-y: scroll;
 
 }
+
+.list::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
