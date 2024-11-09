@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './Station.css';
+import './Projects.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import ListItemOptions from '../../components/ListItemOptions/ListItemOptions';
 
-const Station = () => {
+const Projects = () => {
 
   const [selectedCount, setSelectedCount] = useState(0);
 
@@ -21,7 +21,7 @@ const Station = () => {
 
   return (
 
-    <div className='Station'>
+    <div className='Projects'>
         
         <Header/>
         <List onSelectionChange={handleSelectionChange}/>
@@ -33,4 +33,4 @@ const Station = () => {
 
 }
 
-export default Station;
+export default Projects;

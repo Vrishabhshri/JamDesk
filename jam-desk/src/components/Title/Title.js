@@ -8,7 +8,7 @@ const Title = () => {
 
     const handleOnClick = () => {
 
-        navigate('/station')
+        navigate('/projects')
 
     }
 
