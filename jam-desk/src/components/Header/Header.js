@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
 
-    <div className='title'>
+    <div className='header'>
 
       JamDesk
 

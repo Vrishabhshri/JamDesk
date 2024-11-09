@@ -7,7 +7,7 @@ const HomePage = () => {
     
     <div className='HomePage'>
 
-        <Title />
+        <Title/>
         <div className='slogan'>
 
             A new space for your innovation
@@ -19,4 +19,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default HomePage;
