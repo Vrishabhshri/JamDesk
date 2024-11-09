@@ -1,0 +1,26 @@
+.HomePage {
+
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.page {
+
+    border: 2px solid green;
+    
+    width: 100vw;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.header-box {
+
+
+
+}

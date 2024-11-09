@@ -1,0 +1,18 @@
+.navbar {
+
+    /* border: 2px solid red; */
+
+    width: 50px;
+    height: 50px;
+
+}
+
+.icon {
+
+    background-image: url('./IMG_0141.jpg');
+    width: 50px; /* Set width and height to see the image */
+    height: 50px;
+    background-size: cover;
+    background-image: center;
+
+}
