@@ -1,0 +1,22 @@
+.title {
+
+    border: 2px solid white;
+    border-radius: 20px;
+
+    width: 300px;
+    height: 100px;
+
+    display: flex;            
+    justify-content: center;
+    align-items: center;  
+    font-size: 3.0rem;
+    
+    transition-duration: 0.5s;
+
+}
+
+.title:hover {
+
+    transform: scale(1.1);
+
+}

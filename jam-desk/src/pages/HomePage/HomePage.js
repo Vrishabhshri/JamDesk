@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '/Users/vrish/Desktop/Projects/JamDesk/jam-desk/src/components/Header/Header.js';
 import './HomePage.css';
+import Title from '../../components/Title/Title';
 
 const HomePage = () => {
   return (
     
     <div className='HomePage'>
 
-        <Header />
+        <Title />
         <div className='slogan'>
 
             A new space for your innovation
