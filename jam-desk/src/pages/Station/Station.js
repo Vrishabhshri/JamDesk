@@ -73,7 +73,7 @@ const Station = () => {
       return () => file.audio.removeEventListener('timeupdate', () => updateProgress(index));
 
     });
-    
+
   }, [audioFiles, updateProgress]);
 
   useEffect(() => {
@@ -92,16 +92,12 @@ const Station = () => {
 
     window.addEventListener('beforeunload', handleBeforeUnload);
 
-    // // Cleanup function to remove the event listener when the component unmounts
-    // return () => {
-    //   window.removeEventListener('beforeunload', handleBeforeUnload);
-    //   // Also pause and reset audio when the component is unmounted
-    //   audioFiles.forEach((file) => {
-    //     file.audio.pause();
-    //     file.audio.currentTime = 0; // Reset audio position
-    //   });
-    //   setAudioFiles([]); // Reset the audio files array
-    // };
+    // Cleanup function to remove the event listener when the component unmounts
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+
   }, [audioFiles]);
 
   return (
