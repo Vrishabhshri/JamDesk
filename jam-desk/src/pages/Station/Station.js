@@ -3,11 +3,13 @@ import './Station.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { useDropzone } from 'react-dropzone';
+import { useNavigate } from 'react-router-dom';
 
 const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const navigate = useNavigate();
 
   const onDrop = (acceptedFiles) => {
 
@@ -75,6 +77,8 @@ const Station = () => {
     });
 
   }, [audioFiles, updateProgress]);
+
+  // Stopping audio when reloading the page
 
   useEffect(() => {
     // Stop all audio and reset files when leaving the page or unmounting
