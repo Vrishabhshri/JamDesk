@@ -3,13 +3,11 @@ import './Station.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { useDropzone } from 'react-dropzone';
-import { useNavigate } from 'react-router-dom';
 
 const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const navigate = useNavigate();
 
   const onDrop = (acceptedFiles) => {
 
@@ -128,22 +126,18 @@ const Station = () => {
 
             <div>
 
-              <ul>
-
                 {audioFiles.map((file, index) => (
-                  <li key={index}>
 
-                  <div>{file.name}</div>
+                  <div className='file' key={index}>{file.name}
 
                   <div className="progress-bar-container">
 
                     <div className="progress-bar" style={{ width: `${file.progress}%` }}/>
 
                   </div>
-                </li>
+                  
+                  </div>
                 ))}
-
-              </ul>
 
             </div>
 
@@ -153,7 +147,7 @@ const Station = () => {
 
       </div>
 
-      <button onClick={toggleAudio}>Play</button>
+      <div className='play-button' onClick={toggleAudio}>Play</div>
 
     </div>
 
