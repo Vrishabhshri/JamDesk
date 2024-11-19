@@ -8,6 +8,7 @@ const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playButtonLabel, setPlayButtonLabel] = useState("Play");
 
   const onDrop = (acceptedFiles) => {
 
@@ -35,7 +36,9 @@ const Station = () => {
 
         file.audio.pause();
 
-      })
+      });
+
+      setPlayButtonLabel("Play");
 
     }
     else {
@@ -44,7 +47,9 @@ const Station = () => {
 
         file.audio.play();
 
-      })
+      });
+
+      setPlayButtonLabel("Pause");
 
     }
 
@@ -147,7 +152,7 @@ const Station = () => {
 
       </div>
 
-      <div className='play-button' onClick={toggleAudio}>Play</div>
+      <div className='play-button' onClick={toggleAudio}>{playButtonLabel}</div>
 
     </div>
 
