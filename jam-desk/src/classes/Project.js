@@ -31,20 +31,20 @@ export default class Project {
 
     }
 
-    grantAccess(collaboratorSingle) {
+    grantAccess(collab) {
 
-        if (!this.people.includes(collaboratorSingle)) {
+        if (!this.people.includes(collab)) {
 
-            this.people.push(collaboratorSingle);
+            this.people.push(collab);
             this.updatedLastUpdated();
 
         }
 
     }
 
-    revokeAccess(collaboratorSingle) {
+    revokeAccess(collab) {
 
-        this.people = this.people.filter(p => p !== collaboratorSingle);
+        this.people = this.people.filter(p => p !== collab);
         this.updatedLastUpdated();
 
     }
