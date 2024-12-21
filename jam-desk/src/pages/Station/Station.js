@@ -90,10 +90,12 @@ const Station = () => {
       audioFiles.forEach((file) => {
 
         file.audio.pause();
+        file.audio.currentTime = 0;
 
       });
 
       setAudioFiles([]);
+      setIsPlaying(false);
 
     };
 
