@@ -1,7 +1,10 @@
-class Project {
+import { v4 } from 'uuid';
+
+export default class Project {
 
     constructor(name, creator) {
 
+        this.id = v4();
         this.projectName = name;
         this.createdDate = new Date();
         this.lastUpdated = new Date();
