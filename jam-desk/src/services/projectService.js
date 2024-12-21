@@ -1,5 +1,7 @@
 const API_BASE_URL = "http://localhost:3000/api";
 
+// Fetching all projects
+
 export const fetchProjects = async () => {
 
     const response = await fetch(`${API_BASE_URL}/projects`);
@@ -12,6 +14,8 @@ export const fetchProjects = async () => {
     return response.json();
 
 }
+
+// Save project
 
 export const saveProject = async (projectData) => {
 
@@ -34,6 +38,8 @@ export const saveProject = async (projectData) => {
     return response.json();
 
 }
+
+// Deleting project
 
 export const deleteProject = async (projectID) => {
 
