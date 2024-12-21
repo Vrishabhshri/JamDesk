@@ -4,7 +4,7 @@ export default class Project {
 
     constructor(name, creator) {
 
-        this.id = v4();
+        this.projectID = v4();
         this.projectName = name;
         this.createdDate = new Date();
         this.lastUpdated = new Date();
