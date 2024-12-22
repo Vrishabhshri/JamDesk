@@ -28,23 +28,33 @@ export const fetchProjects = async () => {
 
 export const saveProject = async (projectData) => {
 
-    const response = await fetch(`${API_BASE_URL}/projects`, {
+    try {
 
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(projectData)
+        const response = await fetch(`${API_BASE_URL}/projects`, {
 
-    });
-
-    if (!response.ok) {
-
-        throw new Error("Failed to save project");
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(projectData)
+    
+        });
+    
+        if (!response.ok) {
+    
+            throw new Error("Failed to save project");
+    
+        }
+    
+        return response.json();
 
     }
 
-    return response.json();
+    catch{
+
+        throw new Error("Failed to save project in catch")
+
+    }
 
 }
 
@@ -52,18 +62,28 @@ export const saveProject = async (projectData) => {
 
 export const deleteProject = async (projectID) => {
 
-    const response = await fetch(`${API_BASE_URL}/projects?${projectID}`, {
+    try {
 
-        method: "DELETE"
+        const response = await fetch(`${API_BASE_URL}/projects?${projectID}`, {
 
-    });
-
-    if (!response.ok) {
-
-        throw new Error("Failed to delete project");
+            method: "DELETE"
+    
+        });
+    
+        if (!response.ok) {
+    
+            throw new Error("Failed to delete project");
+    
+        }
+    
+        return response.json();
 
     }
 
-    return response.json();
+    catch {
+
+        throw new Error("Failed to delete project in catch");
+
+    }
 
 }
