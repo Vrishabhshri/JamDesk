@@ -9,6 +9,23 @@ const Projects = () => {
 
   const [selectedCount, setSelectedCount] = useState(0);
   const [projects, setProjects] = useState([]);
+  const [clicked, setClicked] = useState(null);
+  
+  // Handling button press for "create project"
+
+  const handleMouseDown = (index) => {
+
+      setClicked(index);
+
+  }
+
+  const handleMouseUp = () => {
+
+      setClicked(null);
+
+  }
+
+  // Handling count for how many projects have been selected
 
   const handleSelectionChange = (isSelected) => {
 
@@ -20,6 +37,8 @@ const Projects = () => {
     });
 
   }
+
+  // Loading data about projects from database into projects view
 
   useEffect(() => {
 
@@ -34,6 +53,13 @@ const Projects = () => {
         <Header/>
         <List onSelectionChange={handleSelectionChange} size="large" listItems={projects}/>
         {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
+        <div
+            className="create-button"
+            onMouseDown={() => handleMouseDown()}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}>
+            Create Project
+        </div>
     
     </div>
 
