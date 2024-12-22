@@ -3,6 +3,7 @@ import './Projects.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import ListItemOptions from '../../components/ListItemOptions/ListItemOptions';
+import { fetchProjects } from '../../services/projectService';
 
 const Projects = () => {
 
@@ -22,18 +23,16 @@ const Projects = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:3001/projects')
-    .then((response) => response.json())
-    .then((data) => setProjects(data))
+    fetchProjects().then((data) => setProjects(data));
 
-  })
+  });
 
   return (
 
     <div className='Projects'>
         
         <Header/>
-        <List onSelectionChange={handleSelectionChange} size="large"/>
+        <List onSelectionChange={handleSelectionChange} size="large" listItems={projects}/>
         {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
     
     </div>

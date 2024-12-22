@@ -4,14 +4,23 @@ const API_BASE_URL = "http://localhost:3001";
 
 export const fetchProjects = async () => {
 
-    const response = await fetch(`${API_BASE_URL}/projects`);
-    if (!response.ok) {
+    try {
 
-        throw new Error("Failed to fetch projects");
+        const response = await fetch(`${API_BASE_URL}/projects`);
+        if (!response.ok) {
+
+            throw new Error("Failed to fetch projects");
+
+        }
+
+        return response.json();
 
     }
+    catch {
 
-    return response.json();
+        throw new Error("Failed to fetch projects in catch")
+
+    }
 
 }
 
