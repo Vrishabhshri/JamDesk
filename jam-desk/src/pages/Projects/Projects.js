@@ -9,25 +9,25 @@ const Projects = () => {
 
   const [selectedCount, setSelectedCount] = useState(0);
   const [projects, setProjects] = useState([]);
-  const [clicked, setClicked] = useState(null);
+  const [clicked, setClicked] = useState(false);
   
   // Handling button press for "create project"
 
-  const handleMouseDown = (index) => {
+  const handleMouseDown = () => {
 
-      setClicked(index);
+      setClicked(true);
 
   }
 
   const handleMouseUp = () => {
 
-      setClicked(null);
+      setClicked(false);
 
   }
 
   // Handling count for how many projects have been selected
 
-  const handleSelectionChange = (isSelected) => {
+  const onSelectionChange = (isSelected) => {
 
     setSelectedCount(count => {
 
@@ -51,10 +51,10 @@ const Projects = () => {
     <div className='Projects'>
         
         <Header/>
-        <List onSelectionChange={handleSelectionChange} size="large" listItems={projects}/>
+        <List onSelectionChange={onSelectionChange} size="large" listItems={projects}/>
         {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
         <div
-            className="create-button"
+            className={`create-button ${clicked ? 'clicked' : ''}`}
             onMouseDown={() => handleMouseDown()}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}>
