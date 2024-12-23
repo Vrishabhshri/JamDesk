@@ -2,7 +2,7 @@
     "projects": [
 
         { 
-        "id": 1, 
+        "projectID": 1, 
         "name": "Project 1", 
         "dateCreated": "2024-12-21", 
         "lastUpdated": "2024-12-21",
@@ -10,7 +10,7 @@
         "people": []
         },
         { 
-        "id": 2, 
+        "projectID": 2, 
         "name": "Project 2", 
         "dateCreated": "2024-12-21", 
         "lastUpdated": "2024-12-21",

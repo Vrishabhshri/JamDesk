@@ -1,11 +1,14 @@
 import React from 'react';
 import './Title.css';
+import { useNavigate } from 'react-router-dom';
 
 const Title = () => {
 
+    const navigate = useNavigate();
+
     const handleOnClick = () => {
 
-        window.location.href = '/projects';
+        navigate('/projects');
 
     }
 

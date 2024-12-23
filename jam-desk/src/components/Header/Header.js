@@ -1,13 +1,16 @@
 import React from 'react';
 import './Header.css';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
-    const handleOnClick = () => {
+  const navigate = useNavigate();
 
-      window.location.href = '/';
+  const handleOnClick = () => {
 
-    }
+    navigate('/');
+
+  }
 
   return (
 

@@ -5,9 +5,17 @@ const ListItemOptions = ({ selectedCount }) => {
 
     const [clicked, setClicked] = useState(null);
 
+    // Handling button animations
+
     const handleMouseDown = (index) => {
 
         setClicked(index);
+
+        if (index === 0) {
+
+            handleOpenPress();
+
+        }
 
     }
 
@@ -16,6 +24,18 @@ const ListItemOptions = ({ selectedCount }) => {
         setClicked(null);
 
     }
+
+    // Handling opening a project
+
+    const handleOpenPress = () => {
+
+        try {
+
+            const projectData
+
+        }
+
+    }   
 
     const options = ['Open', 'Delete', 'Add to Folder'];
 
