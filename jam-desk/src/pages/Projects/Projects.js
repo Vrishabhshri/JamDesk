@@ -7,7 +7,7 @@ import { fetchProjects } from '../../services/projectService';
 
 const Projects = () => {
 
-  const [selectedCount, setSelectedCount] = useState(0);
+  const [selectedProjects, setSelectedProjects] = useState({});
   const [projects, setProjects] = useState([]);
   const [clicked, setClicked] = useState(false);
   
@@ -27,12 +27,24 @@ const Projects = () => {
 
   // Handling count for how many projects have been selected
 
-  const onSelectionChange = (isSelected) => {
+  const onSelectionChange = (isSelected, projectInfo) => {
 
-    setSelectedCount(count => {
+    setSelectedProjects(currentProjects => {
 
-      const newCount = isSelected ? count + 1 : count - 1;
-      return newCount >= 0 ? newCount : 0;
+      const updatedProjects = {...currentProjects};
+
+      if (isSelected) {
+
+        updatedProjects[projectInfo.projectID] = projectInfo.name;
+
+      }
+      else {
+
+        delete updatedProjects[projectInfo.projectID];
+
+      }
+
+      return updatedProjects;
 
     });
 
@@ -52,7 +64,7 @@ const Projects = () => {
         
         <Header/>
         <List onSelectionChange={onSelectionChange} size="large" listItems={projects}/>
-        {selectedCount > 0 && <ListItemOptions selectedCount={selectedCount}/>}
+        {Object.keys(selectedProjects).length > 0 && <ListItemOptions selectedCount={Object.keys(selectedProjects).length}/>}
         <div
             className={`create-button ${clicked ? 'clicked' : ''}`}
             onMouseDown={() => handleMouseDown()}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ListItemOptions.css';
+import { fetchProjectByID } from '../../services/projectService';
 
 const ListItemOptions = ({ selectedCount }) => {
 
@@ -27,13 +28,13 @@ const ListItemOptions = ({ selectedCount }) => {
 
     // Handling opening a project
 
-    const handleOpenPress = () => {
+    const handleOpenPress = async () => {
 
-        try {
+        // try {
 
-            const projectData
+        //     const projectData = await fetchProjectByID(selectedProjectID)
 
-        }
+        // }
 
     }   
 

@@ -10,9 +10,9 @@ const List = ({ onSelectionChange, size, listItems }) => {
 
         <div className={`list ${size}`}>
 
-            {listItems.map((_, index) => (
+            {listItems.map((listItem, index) => (
 
-                <ListItem key={index} onSelectionChange={onSelectionChange}/>
+                <ListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
 
             ))}
 
