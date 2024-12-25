@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from '../ListItem/ListItem';
+import ProjectListItem from '../ListItem/ProjectListItem';
 import './List.css';
 
 const List = ({ onSelectionChange, size, listItems }) => {
@@ -12,7 +12,7 @@ const List = ({ onSelectionChange, size, listItems }) => {
 
             {listItems.map((listItem, index) => (
 
-                <ListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
+                <ProjectListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
 
             ))}
 

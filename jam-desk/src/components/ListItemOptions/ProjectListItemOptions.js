@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './ListItemOptions.css';
 import { fetchProjectByID } from '../../services/projectService';
+import { useNavigate } from 'react-router-dom';
 
-const ListItemOptions = ({ selectedCount }) => {
+const ListItemOptions = ({ selectedProjects }) => {
 
     const [clicked, setClicked] = useState(null);
+    const navigate = useNavigate();
 
     // Handling button animations
 
@@ -30,11 +32,17 @@ const ListItemOptions = ({ selectedCount }) => {
 
     const handleOpenPress = async () => {
 
-        // try {
+        try {
 
-        //     const projectData = await fetchProjectByID(selectedProjectID)
+            const projectData = await fetchProjectByID(Number(Object.keys(selectedProjects)[0]));
+            navigate('/station', { state: { project: projectData } });
 
-        // }
+        }
+        catch (error) {
+
+            console.error("Error opening project:", error);
+
+        }
 
     }   
 
@@ -46,7 +54,7 @@ const ListItemOptions = ({ selectedCount }) => {
 
             {options.map((option, index) => {
 
-                if (option === 'Open' && selectedCount > 1) return null;
+                if (option === 'Open' && Object.keys(selectedProjects).length > 1) return null;
 
                 return (
                     <div

@@ -3,12 +3,15 @@ import './Station.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { useDropzone } from 'react-dropzone';
+import { useLocation } from 'react-router-dom';
 
 const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playButtonLabel, setPlayButtonLabel] = useState("Play");
+  const location = useLocation();
+  const project = location.state?.project;
 
   const onDrop = (acceptedFiles) => {
 
@@ -116,7 +119,7 @@ const Station = () => {
       <Header/>
 
       <div className='files'>Files</div>
-      <List size="medium"/>
+      <List size="medium" listItems={project.audioFiles}/>
 
       <div className='work-station-title'>Station</div>
       <div className='work-station' {...getRootProps()}>

@@ -8,13 +8,13 @@ const ListItem = ({ key, onSelectionChange, listItem }) => {
     const handleSelect = () => {
 
         setSelected(!selected)
-        onSelectionChange(!selected, {name: listItem.name, projectID: listItem.projectID})
+        onSelectionChange(!selected, {name: listItem.name, projectID: listItem.id})
 
     };
 
     return (
 
-        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem.name}, {listItem.projectID} </div>
+        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem.name}, {listItem.id} </div>
 
     )
 

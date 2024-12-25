@@ -2,19 +2,19 @@
     "projects": [
 
         { 
-        "projectID": 1, 
+        "id": "1", 
         "name": "Project 1", 
         "dateCreated": "2024-12-21", 
         "lastUpdated": "2024-12-21",
-        "audioFiles": [],
+        "audioFiles": ["hi", "going"],
         "people": []
         },
         { 
-        "projectID": 2, 
+        "id": "2", 
         "name": "Project 2", 
         "dateCreated": "2024-12-21", 
         "lastUpdated": "2024-12-21",
-        "audioFiles": [],
+        "audioFiles": ["hi", "going"],
         "people": []
         }
 

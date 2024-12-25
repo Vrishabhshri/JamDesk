@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Projects.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
-import ListItemOptions from '../../components/ListItemOptions/ListItemOptions';
+import ProjectListItemOptions from '../../components/ListItemOptions/ProjectListItemOptions';
 import { fetchProjects } from '../../services/projectService';
 
 const Projects = () => {
@@ -64,7 +64,7 @@ const Projects = () => {
         
         <Header/>
         <List onSelectionChange={onSelectionChange} size="large" listItems={projects}/>
-        {Object.keys(selectedProjects).length > 0 && <ListItemOptions selectedCount={Object.keys(selectedProjects).length}/>}
+        {Object.keys(selectedProjects).length > 0 && <ProjectListItemOptions selectedProjects={selectedProjects}/>}
         <div
             className={`create-button ${clicked ? 'clicked' : ''}`}
             onMouseDown={() => handleMouseDown()}
