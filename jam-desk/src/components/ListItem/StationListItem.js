@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './ListItem.css';
 
-const ProjectListItem = ({ key, onSelectionChange, listItem }) => {
+const StationListItem = ({ key, onSelectionChange, listItem }) => {
 
     const [selected, setSelected] = useState(false);
 
     const handleSelect = () => {
 
         setSelected(!selected)
-        onSelectionChange(!selected, {name: listItem.name, projectID: listItem.id})
+        onSelectionChange(!selected, {name: listItem.name, audioFileID: listItem.id})
 
     };
 
@@ -20,4 +20,4 @@ const ProjectListItem = ({ key, onSelectionChange, listItem }) => {
 
 }
 
-export default ProjectListItem;
+export default StationListItem;

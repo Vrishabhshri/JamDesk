@@ -56,14 +56,14 @@ const Projects = () => {
 
     fetchProjects().then((data) => setProjects(data));
 
-  });
+  }, []);
 
   return (
 
     <div className='Projects'>
         
         <Header/>
-        <List onSelectionChange={onSelectionChange} size="large" listItems={projects}/>
+        <List onSelectionChange={onSelectionChange} size="large" listItems={projects} type={"project"}/>
         {Object.keys(selectedProjects).length > 0 && <ProjectListItemOptions selectedProjects={selectedProjects}/>}
         <div
             className={`create-button ${clicked ? 'clicked' : ''}`}

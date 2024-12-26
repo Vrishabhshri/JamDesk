@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './ListItemOptions.css';
+import './ProjectListItemOptions.css';
 import { fetchProjectByID } from '../../services/projectService';
 import { useNavigate } from 'react-router-dom';
 
-const ListItemOptions = ({ selectedProjects }) => {
+const ProjectListItemOptions = ({ selectedProjects }) => {
 
     const [clicked, setClicked] = useState(null);
     const navigate = useNavigate();
@@ -75,4 +75,4 @@ const ListItemOptions = ({ selectedProjects }) => {
 
 }
 
-export default ListItemOptions;
+export default ProjectListItemOptions;

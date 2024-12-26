@@ -119,7 +119,7 @@ const Station = () => {
       <Header/>
 
       <div className='files'>Files</div>
-      <List size="medium" listItems={project.audioFiles}/>
+      <List size="medium" listItems={project.audioFiles} type={"station"}/>
 
       <div className='work-station-title'>Station</div>
       <div className='work-station' {...getRootProps()}>

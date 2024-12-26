@@ -1,8 +1,9 @@
 import React from 'react';
 import ProjectListItem from '../ListItem/ProjectListItem';
+import StationListItem from '../ListItem/StationListItem';
 import './List.css';
 
-const List = ({ onSelectionChange, size, listItems }) => {
+const List = ({ onSelectionChange, size, listItems, type }) => {
 
 
 
@@ -10,11 +11,21 @@ const List = ({ onSelectionChange, size, listItems }) => {
 
         <div className={`list ${size}`}>
 
-            {listItems.map((listItem, index) => (
+            {listItems.map((listItem, index) => {
 
-                <ProjectListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
+                if (type === "project") {
+                    
+                    return <ProjectListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
 
-            ))}
+                }
+                else if (type === "station") {
+
+                    return <StationListItem key={index} onSelectionChange={onSelectionChange} listItem={listItem}/>
+
+                }
+
+
+            })}
 
         </div>
     
