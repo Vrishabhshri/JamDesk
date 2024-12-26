@@ -13,6 +13,8 @@ const Station = () => {
   const location = useLocation();
   const project = location.state?.project;
 
+  // Handling audio files being dropped into work station
+
   const onDrop = (acceptedFiles) => {
 
     // Converting audio files to elemenets
@@ -26,10 +28,14 @@ const Station = () => {
 
   };
 
+  // Creating drop zone for audio files
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: 'audio/*',
   });
+
+  // Handling pause and play of audio
 
   const toggleAudio = () => {
 
@@ -60,6 +66,8 @@ const Station = () => {
 
   }
 
+  // Loading progress bars for each song
+
   const updateProgress = useCallback((index) => {
 
     const file = audioFiles[index];
@@ -71,6 +79,7 @@ const Station = () => {
   }, [audioFiles]);
 
   // Add event listeners for each audio file to track progress
+  
   useEffect(() => {
 
     audioFiles.forEach((file, index) => {
