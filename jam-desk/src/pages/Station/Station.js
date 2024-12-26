@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { useDropzone } from 'react-dropzone';
 import { useLocation } from 'react-router-dom';
+import { saveProject } from '../../services/projectService';
 
 const Station = () => {
 
@@ -24,7 +25,9 @@ const Station = () => {
       audio: new Audio(URL.createObjectURL(file)) // Creating Audio object
     }));
 
-    setAudioFiles((audioFiles) => [...audioFiles, ...newFiles]);
+    project.audioFiles.push(...newFiles);
+    saveProject(project.id, project);
+    setAudioFiles(project.audioFiles);
 
   };
 
@@ -78,8 +81,18 @@ const Station = () => {
 
   }, [audioFiles]);
 
+  // const onSelectionChange = (isSelected, fileInfo) => {
+
+  //   if (isSelected) {
+
+      
+
+  //   }
+
+  // }
+
   // Add event listeners for each audio file to track progress
-  
+
   useEffect(() => {
 
     audioFiles.forEach((file, index) => {
@@ -120,6 +133,18 @@ const Station = () => {
     };
 
   }, [audioFiles]);
+
+  // Adding audio files already present in project to files area
+
+  useEffect(() => {
+
+    if (project?.audioFiles) {
+
+      setAudioFiles(project.audioFiles);
+
+    }
+
+  }, [project])
 
   return (
 

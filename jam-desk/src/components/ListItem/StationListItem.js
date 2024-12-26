@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ListItem.css';
 
-const StationListItem = ({ key, onSelectionChange, listItem }) => {
+const StationListItem = ({ onSelectionChange, listItem }) => {
 
     const [selected, setSelected] = useState(false);
 

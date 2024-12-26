@@ -48,15 +48,49 @@ export const fetchProjectByID = async (projectID) => {
     }
 }
 
-// Save project
+// Create project
 
-export const saveProject = async (projectData) => {
+export const createProject = async (projectData) => {
 
     try {
 
         const response = await fetch(`${API_BASE_URL}/projects`, {
 
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(projectData)
+    
+        });
+    
+        if (!response.ok) {
+    
+            throw new Error("Failed to create project (createProject)");
+    
+        }
+    
+        return response.json();
+
+    }
+
+    catch{
+
+        throw new Error("Failed to load selected project (saveProject)")
+
+    }
+
+}
+
+// Save project
+
+export const saveProject = async (projectID, projectData) => {
+
+    try {
+
+        const response = await fetch(`${API_BASE_URL}/projects/${projectID}`, {
+
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
