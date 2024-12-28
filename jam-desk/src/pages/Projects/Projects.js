@@ -65,13 +65,14 @@ const Projects = () => {
         <Header/>
         <List onSelectionChange={onSelectionChange} size="large" listItems={projects} type={"project"}/>
         {Object.keys(selectedProjects).length > 0 && <ProjectListItemOptions selectedProjects={selectedProjects}/>}
+        {Object.keys(selectedProjects) === 0 &&
         <div
             className={`create-button ${clicked ? 'clicked' : ''}`}
             onMouseDown={() => handleMouseDown()}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}>
             Create Project
-        </div>
+        </div>}
     
     </div>
 
