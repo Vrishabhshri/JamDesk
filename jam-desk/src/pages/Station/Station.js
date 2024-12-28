@@ -19,22 +19,19 @@ const Station = () => {
 
   const onDrop = (acceptedFiles) => {
 
-    // Converting audio files to elemenets
-    const newFiles = acceptedFiles.map(file => {
+    // Converting audio files to elements separating URL and audios from files
+
+    acceptedFiles.forEach(file => {
 
       const fileName = file.name;
       const fileURL = URL.createObjectURL(file)
       const fileAudio = new Audio(fileURL);
 
-      let newAudio = { name: fileName, audio: fileAudio }
-      setAudios((currentAudios) => )
+      setAudios(prevAudios => ({...prevAudios, [fileName]: {fileAudio}}));
+      setAudioFiles(prevAudioFiles => ({...prevAudioFiles, [fileName]: {fileURL, date: new Date()}}))
+      project.audioFiles = audioFiles
 
-      return { name: file.name, url: URL.createObjectURL(file) } // Creating URL for each audio file
     });
-
-    project.audioFiles.push(...newFiles);
-    saveProject(project.id, project);
-    setAudioFiles(project.audioFiles);
 
   };
 
@@ -51,22 +48,38 @@ const Station = () => {
 
     if (isPlaying) {
 
-      audioFiles.forEach(file => {
+      // audioFiles.forEach(file => {
 
-        file.audio.pause();
+      //   file.audio.pause();
 
-      });
+      // });
+
+      for (const fileName in audios) {
+
+        const fileAudio = audios[fileName].fileAudio;
+
+        fileAudio.pause();
+
+      }
 
       setPlayButtonLabel("Play");
 
     }
     else {
 
-      audioFiles.forEach(file => {
+      // audioFiles.forEach(file => {
 
-        file.audio.play();
+      //   file.audio.play();
 
-      });
+      // });
+
+      for (const fileName in audios) {
+        
+        const fileAudio = audios[fileName].fileAudio;
+
+        fileAudio.play();
+
+      }
 
       setPlayButtonLabel("Pause");
 
@@ -78,15 +91,34 @@ const Station = () => {
 
   // Loading progress bars for each song
 
-  const updateProgress = useCallback((index) => {
+  const updateProgress = useCallback((fileName) => {
 
-    const file = audioFiles[index];
-    const progress = (file.audio.currentTime / file.audio.duration) * 100;
-    const updatedFiles = [...audioFiles];
-    updatedFiles[index].progress = progress;
-    setAudioFiles(updatedFiles);
+    // const file = audioFiles[index];
+    // const progress = (file.audio.currentTime / file.audio.duration) * 100;
+    // const updatedFiles = [...audioFiles];
+    // updatedFiles[index].progress = progress;
+    // setAudioFiles(updatedFiles);
 
-  }, [audioFiles]);
+    setAudios((prevAudios) => {
+
+      const fileAudio = prevAudios[fileName].fileAudio;
+
+      if (!fileAudio) {
+
+        console.log("Audio file not found")
+        return prevAudios;
+
+      }
+      else {
+
+        const progress = (fileAudio.currentTime / fileAudio.duration) * 100;
+        return {...prevAudios, [fileName]: {...fileAudio, progress}}
+
+      }
+
+    });
+
+  }, []);
 
   // const onSelectionChange = (isSelected, fileInfo) => {
 
@@ -114,16 +146,27 @@ const Station = () => {
 
   useEffect(() => {
 
-    audioFiles.forEach((file, index) => {
+    // audioFiles.forEach((file, index) => {
 
-      file.audio.addEventListener('timeupdate', () => updateProgress(index));
+    //   file.audio.addEventListener('timeupdate', () => updateProgress(index));
+
+    //   // Cleanup event listener when component unmounts
+    //   return () => file.audio.removeEventListener('timeupdate', () => updateProgress(index));
+
+    // });
+
+    for (const fileName in audios) {
+
+      const fileAudio = audios[fileName].fileAudio
+
+      fileAudio.addEventListener('timeupdate', () => updateProgress(fileName));
 
       // Cleanup event listener when component unmounts
-      return () => file.audio.removeEventListener('timeupdate', () => updateProgress(index));
+      return () => fileAudio.removeEventListener
 
-    });
+    }
 
-  }, [audioFiles, updateProgress]);
+  }, [audios, updateProgress]);
 
   // Stopping audio when reloading the page
 
@@ -160,7 +203,7 @@ const Station = () => {
       <Header/>
 
       <div className='files'>Files</div>
-      <List size="medium" listItems={project.audioFiles} type={"station"}/>
+      <List size="medium" listItems={Object.entries(audioFiles)} type={"station"}/>
 
       <div className='work-station-title'>Station</div>
       <div className='work-station' {...getRootProps()}>
@@ -173,11 +216,11 @@ const Station = () => {
 
         <div className='audio-files-list'>
 
-          {audioFiles.length > 0 && (
+          {Object.keys(audios).length > 0 && (
 
             <div>
 
-                {audioFiles.map((file, index) => (
+                {/* {audioFiles.map((file, index) => (
 
                   <div className='file' key={index}>{file.name}
 
@@ -188,6 +231,20 @@ const Station = () => {
                   </div>
                   
                   </div>
+                )); */}
+                
+                {Object.keys(audios).map((fileName, index) => (
+
+                  <div className='file' key={index}>{fileName}
+
+                  <div className="progress-bar-container">
+
+                    <div className="progress-bar" style={{ width: `${audios[fileName].progress}%` }}/>
+
+                  </div>
+                  
+                  </div>
+
                 ))}
 
             </div>

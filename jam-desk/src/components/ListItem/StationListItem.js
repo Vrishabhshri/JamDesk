@@ -3,6 +3,8 @@ import './ListItem.css';
 
 const StationListItem = ({ onSelectionChange, listItem }) => {
 
+    console.log(listItem)
+
     const [selected, setSelected] = useState(false);
 
     const handleSelect = () => {
@@ -14,7 +16,7 @@ const StationListItem = ({ onSelectionChange, listItem }) => {
 
     return (
 
-        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem.name}, {listItem.id} </div>
+        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem[0]}, {listItem[1].date.toDateString()} </div>
 
     )
 
