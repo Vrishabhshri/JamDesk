@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState({});
+  const [audios, setAudios] = useState({});
+  const [selectedFiles, setSelectedFiles] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [playButtonLabel, setPlayButtonLabel] = useState("Play");
-  const [audios, setAudios] = useState({});
   const project = JSON.parse(localStorage.getItem('project'));
   const navigate = useNavigate();
 
@@ -78,15 +79,15 @@ const Station = () => {
 
   }
 
-  // const onSelectionChange = (isSelected, fileInfo) => {
+  const onSelectionChange = (isSelected, fileInfo) => {
 
-  //   if (isSelected) {
+    if (isSelected) {
 
       
 
-  //   }
+    }
 
-  // }
+  }
 
   // Loading audio files already present in project to files area
 
@@ -99,7 +100,7 @@ const Station = () => {
     }
     else {
 
-      console.log("Should be leaving page when project is not present in localStorage")
+      console.log("Should see project in localStorage")
 
     }
 

@@ -7,7 +7,8 @@ const StationListItem = ({ onSelectionChange, listItem }) => {
 
     const handleSelect = () => {
 
-        setSelected(!selected)
+        setSelected(!selected);
+        onSelectionChange(!selected, listItem[0]);
 
     };
 
