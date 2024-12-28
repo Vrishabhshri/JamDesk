@@ -79,13 +79,26 @@ const Station = () => {
 
   }
 
-  const onSelectionChange = (isSelected, fileInfo) => {
+  const onSelectionChange = (isSelected, fileName) => {
 
-    if (isSelected) {
+    setSelectedFiles(currentFiles => {
 
-      
+      const updatedFiles = {...currentFiles};
 
-    }
+      if (isSelected) {
+
+        updatedFiles[fileName] = true;
+
+      }
+      else {
+
+        delete updatedFiles[fileName];
+
+      }
+
+      return updatedFiles;
+
+    })
 
   }
 
@@ -193,7 +206,7 @@ const Station = () => {
       <Header/>
 
       <div className='files'>Files</div>
-      <List size="medium" listItems={Object.entries(audioFiles)} type={"station"}/>
+      <List onSelectionChange={onSelectionChange} size="medium" listItems={Object.entries(audioFiles)} type={"station"}/>
 
       <div className='work-station-title'>Station</div>
       <div className='work-station' {...getRootProps()}>
