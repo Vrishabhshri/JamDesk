@@ -3,8 +3,6 @@ import './ListItem.css';
 
 const StationListItem = ({ onSelectionChange, listItem }) => {
 
-    console.log(listItem)
-
     const [selected, setSelected] = useState(false);
 
     const handleSelect = () => {

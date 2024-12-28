@@ -27,9 +27,8 @@ const Station = () => {
       const fileURL = URL.createObjectURL(file)
       const fileAudio = new Audio(fileURL);
 
-      setAudios(prevAudios => ({...prevAudios, [fileName]: {fileAudio}}));
-      setAudioFiles(prevAudioFiles => ({...prevAudioFiles, [fileName]: {fileURL, date: new Date()}}))
-      project.audioFiles = audioFiles
+      setAudios(prevAudios => ({...prevAudios, [fileName]: {fileAudio, progress: 0}}));
+      setAudioFiles(prevAudioFiles => ({...prevAudioFiles, [fileName]: {fileURL, date: new Date()}}));
 
     });
 
@@ -48,12 +47,6 @@ const Station = () => {
 
     if (isPlaying) {
 
-      // audioFiles.forEach(file => {
-
-      //   file.audio.pause();
-
-      // });
-
       for (const fileName in audios) {
 
         const fileAudio = audios[fileName].fileAudio;
@@ -66,12 +59,6 @@ const Station = () => {
 
     }
     else {
-
-      // audioFiles.forEach(file => {
-
-      //   file.audio.play();
-
-      // });
 
       for (const fileName in audios) {
         
@@ -93,32 +80,11 @@ const Station = () => {
 
   const updateProgress = useCallback((fileName) => {
 
-    // const file = audioFiles[index];
-    // const progress = (file.audio.currentTime / file.audio.duration) * 100;
-    // const updatedFiles = [...audioFiles];
-    // updatedFiles[index].progress = progress;
-    // setAudioFiles(updatedFiles);
+    const fileAudio = audios[fileName].fileAudio;
+    const progress = (fileAudio.currentTime / fileAudio.duration) * 100;
+    audios[fileName].progress = progress;
 
-    setAudios((prevAudios) => {
-
-      const fileAudio = prevAudios[fileName].fileAudio;
-
-      if (!fileAudio) {
-
-        console.log("Audio file not found")
-        return prevAudios;
-
-      }
-      else {
-
-        const progress = (fileAudio.currentTime / fileAudio.duration) * 100;
-        return {...prevAudios, [fileName]: {...fileAudio, progress}}
-
-      }
-
-    });
-
-  }, []);
+  }, [audios]);
 
   // const onSelectionChange = (isSelected, fileInfo) => {
 
@@ -129,8 +95,6 @@ const Station = () => {
   //   }
 
   // }
-
-  // Add event listeners for each audio file to track progress
 
   // Adding audio files already present in project to files area
 
@@ -144,27 +108,23 @@ const Station = () => {
 
   }, [project])
 
+  // Add event listeners for each audio file to track progress
+
   useEffect(() => {
 
-    // audioFiles.forEach((file, index) => {
-
-    //   file.audio.addEventListener('timeupdate', () => updateProgress(index));
-
-    //   // Cleanup event listener when component unmounts
-    //   return () => file.audio.removeEventListener('timeupdate', () => updateProgress(index));
-
-    // });
+    const eventListeners = [];
 
     for (const fileName in audios) {
 
-      const fileAudio = audios[fileName].fileAudio
+      const fileAudio = audios[fileName].fileAudio;
+      const handleTimeUpdate = () => updateProgress(fileName);
 
-      fileAudio.addEventListener('timeupdate', () => updateProgress(fileName));
-
-      // Cleanup event listener when component unmounts
-      return () => fileAudio.removeEventListener
+      fileAudio.addEventListener('timeupdate', handleTimeUpdate);
+      eventListeners.push(() => fileAudio.removeEventListener('timeupdate', handleTimeUpdate))
 
     }
+
+    return () => {eventListeners.forEach((cleanup) => cleanup())}
 
   }, [audios, updateProgress]);
 
@@ -174,14 +134,16 @@ const Station = () => {
     // Stop all audio and reset files when leaving the page or unmounting
     const handleBeforeUnload = () => {
 
-      audioFiles.forEach((file) => {
+      for (const fileName in audios) {
 
-        file.audio.pause();
-        file.audio.currentTime = 0;
+        const fileAudio = audios[fileName].fileAudio;
 
-      });
+        fileAudio.pause();
+        fileAudio.currentTime = 0;
 
-      setAudioFiles([]);
+      }
+
+      setAudioFiles({});
       setIsPlaying(false);
 
     };
@@ -194,7 +156,16 @@ const Station = () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
 
-  }, [audioFiles]);
+  }, [audios]);
+
+  // Updating project in database properly
+
+  useEffect(() => {
+
+    project.audioFiles = audioFiles;
+    saveProject(project.id, project);
+
+  })
 
   return (
 
