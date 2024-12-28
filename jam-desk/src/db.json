@@ -5,27 +5,16 @@
       "name": "Project 1",
       "dateCreated": "2024-12-21",
       "lastUpdated": "2024-12-21",
-      "audioFiles": [
-        {
-          "name": "2024-11-20-2 rock x rnb.wav",
-          "url": "blob:http://localhost:3000/c5bde6c4-7c98-43a6-b4e1-52975a75f088",
-          "audio": {}
-        },
-        {
-          "name": "2024-12-19 never wanna work hard.wav",
-          "url": "blob:http://localhost:3000/837c741c-d0f3-4a22-bf44-6a75ac4634c4",
-          "audio": {}
-        }
-      ],
-      "people": []
+      "audioFiles": {},
+      "people": {}
     },
     {
       "id": "2",
       "name": "Project 2",
       "dateCreated": "2024-12-21",
       "lastUpdated": "2024-12-21",
-      "audioFiles": [],
-      "people": []
+      "audioFiles": {},
+      "people": {}
     }
   ]
 }

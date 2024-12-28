@@ -8,9 +8,10 @@ import { saveProject } from '../../services/projectService';
 
 const Station = () => {
 
-  const [audioFiles, setAudioFiles] = useState([]);
+  const [audioFiles, setAudioFiles] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [playButtonLabel, setPlayButtonLabel] = useState("Play");
+  const [audios, setAudios] = useState({});
   const location = useLocation();
   const project = location.state?.project;
 
@@ -19,11 +20,17 @@ const Station = () => {
   const onDrop = (acceptedFiles) => {
 
     // Converting audio files to elemenets
-    const newFiles = acceptedFiles.map(file => ({
-      name: file.name,
-      url: URL.createObjectURL(file), // Creating URL for each audio file
-      audio: new Audio(URL.createObjectURL(file)) // Creating Audio object
-    }));
+    const newFiles = acceptedFiles.map(file => {
+
+      const fileName = file.name;
+      const fileURL = URL.createObjectURL(file)
+      const fileAudio = new Audio(fileURL);
+
+      let newAudio = { name: fileName, audio: fileAudio }
+      setAudios((currentAudios) => )
+
+      return { name: file.name, url: URL.createObjectURL(file) } // Creating URL for each audio file
+    });
 
     project.audioFiles.push(...newFiles);
     saveProject(project.id, project);
@@ -93,6 +100,18 @@ const Station = () => {
 
   // Add event listeners for each audio file to track progress
 
+  // Adding audio files already present in project to files area
+
+  useEffect(() => {
+
+    if (project?.audioFiles) {
+
+      setAudioFiles(project.audioFiles);
+
+    }
+
+  }, [project])
+
   useEffect(() => {
 
     audioFiles.forEach((file, index) => {
@@ -133,18 +152,6 @@ const Station = () => {
     };
 
   }, [audioFiles]);
-
-  // Adding audio files already present in project to files area
-
-  useEffect(() => {
-
-    if (project?.audioFiles) {
-
-      setAudioFiles(project.audioFiles);
-
-    }
-
-  }, [project])
 
   return (
 

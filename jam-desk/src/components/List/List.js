@@ -5,8 +5,6 @@ import './List.css';
 
 const List = ({ onSelectionChange, size, listItems, type }) => {
 
-
-
     return (
 
         <div className={`list ${size}`}>
