@@ -7,8 +7,8 @@ const ProjectListItem = ({ onSelectionChange, listItem }) => {
 
     const handleSelect = () => {
 
-        setSelected(!selected);
         onSelectionChange(!selected, {name: listItem.name, projectID: listItem.id});
+        setSelected(!selected);
 
     };
 

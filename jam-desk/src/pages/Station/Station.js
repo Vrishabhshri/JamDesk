@@ -10,7 +10,6 @@ const Station = () => {
 
   const [audioFiles, setAudioFiles] = useState({});
   const [audios, setAudios] = useState({});
-  const [selectedFiles, setSelectedFiles] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [playButtonLabel, setPlayButtonLabel] = useState("Play");
   const project = JSON.parse(localStorage.getItem('project'));
@@ -28,8 +27,10 @@ const Station = () => {
       const fileURL = URL.createObjectURL(file)
       const fileAudio = new Audio(fileURL);
 
-      project.audioFiles[fileName] = {fileURL, date: new Date()};
+      project.audioFiles[fileName] = {fileURL, date: new Date().toDateString()};
       saveProject(project.id, project);
+      localStorage.setItem('project', JSON.stringify(project));
+
       setAudioFiles(project.audioFiles);
       setAudios(prevAudios => ({...prevAudios, [fileName]: {fileAudio, progress: 0}}));
 
@@ -81,24 +82,26 @@ const Station = () => {
 
   const onSelectionChange = (isSelected, fileName) => {
 
-    setSelectedFiles(currentFiles => {
+    setAudios(currentAudios => {
 
-      const updatedFiles = {...currentFiles};
+      const updatedAudios = {...currentAudios};
 
       if (isSelected) {
 
-        updatedFiles[fileName] = true;
+        const fileURL = audioFiles[fileName].fileURL;
+
+        audios[fileName] = {fileAudio: new Audio(fileURL), progress: 0};
 
       }
       else {
 
-        delete updatedFiles[fileName];
+        delete audios[fileName];
 
       }
 
-      return updatedFiles;
+      return updatedAudios;
 
-    })
+    });
 
   }
 

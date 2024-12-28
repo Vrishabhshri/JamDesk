@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './ListItem.css';
 
 const StationListItem = ({ onSelectionChange, listItem }) => {
@@ -7,8 +7,8 @@ const StationListItem = ({ onSelectionChange, listItem }) => {
 
     const handleSelect = () => {
 
-        setSelected(!selected);
         onSelectionChange(!selected, listItem[0]);
+        setSelected(!selected);
 
     };
 
