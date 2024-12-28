@@ -3,8 +3,8 @@ import './Station.css';
 import Header from '../../components/Header/Header';
 import List from '../../components/List/List';
 import { useDropzone } from 'react-dropzone';
-import { useLocation } from 'react-router-dom';
 import { saveProject } from '../../services/projectService';
+import { useNavigate } from 'react-router-dom';
 
 const Station = () => {
 
@@ -12,8 +12,8 @@ const Station = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playButtonLabel, setPlayButtonLabel] = useState("Play");
   const [audios, setAudios] = useState({});
-  const location = useLocation();
-  const project = location.state?.project;
+  const project = JSON.parse(localStorage.getItem('project'));
+  const navigate = useNavigate();
 
   // Handling audio files being dropped into work station
 
@@ -27,8 +27,10 @@ const Station = () => {
       const fileURL = URL.createObjectURL(file)
       const fileAudio = new Audio(fileURL);
 
+      project.audioFiles[fileName] = {fileURL, date: new Date()};
+      saveProject(project.id, project);
+      setAudioFiles(project.audioFiles);
       setAudios(prevAudios => ({...prevAudios, [fileName]: {fileAudio, progress: 0}}));
-      setAudioFiles(prevAudioFiles => ({...prevAudioFiles, [fileName]: {fileURL, date: new Date()}}));
 
     });
 
@@ -76,16 +78,6 @@ const Station = () => {
 
   }
 
-  // Loading progress bars for each song
-
-  const updateProgress = useCallback((fileName) => {
-
-    const fileAudio = audios[fileName].fileAudio;
-    const progress = (fileAudio.currentTime / fileAudio.duration) * 100;
-    audios[fileName].progress = progress;
-
-  }, [audios]);
-
   // const onSelectionChange = (isSelected, fileInfo) => {
 
   //   if (isSelected) {
@@ -96,9 +88,20 @@ const Station = () => {
 
   // }
 
-  // Adding audio files already present in project to files area
+  // Loading audio files already present in project to files area
 
   useEffect(() => {
+
+    if (!localStorage.getItem('project')) {
+
+      navigate('/projects');
+
+    }
+    else {
+
+      console.log("Should be leaving page when project is not present in localStorage")
+
+    }
 
     if (project?.audioFiles) {
 
@@ -106,7 +109,28 @@ const Station = () => {
 
     }
 
-  }, [project])
+  }, [navigate])
+
+  // Updating audio progress at each current time
+
+  const updateProgress = (fileName) => {
+
+    setAudios((prevAudios) => {
+
+      const updatedAudios = {...prevAudios};
+      const fileAudio = updatedAudios[fileName]?.fileAudio;
+      if (fileAudio) {
+
+        const progress = (fileAudio.currentTime / fileAudio.duration) * 100;
+        updatedAudios[fileName].progress = progress;
+
+      }
+
+      return updatedAudios;
+
+    })
+
+  }
 
   // Add event listeners for each audio file to track progress
 
@@ -117,7 +141,10 @@ const Station = () => {
     for (const fileName in audios) {
 
       const fileAudio = audios[fileName].fileAudio;
-      const handleTimeUpdate = () => updateProgress(fileName);
+
+      // Updating audio progress at each current time
+
+      const handleTimeUpdate = () => updateProgress(fileName)
 
       fileAudio.addEventListener('timeupdate', handleTimeUpdate);
       eventListeners.push(() => fileAudio.removeEventListener('timeupdate', handleTimeUpdate))
@@ -126,7 +153,7 @@ const Station = () => {
 
     return () => {eventListeners.forEach((cleanup) => cleanup())}
 
-  }, [audios, updateProgress]);
+  }, [audios]);
 
   // Stopping audio when reloading the page
 
@@ -158,15 +185,6 @@ const Station = () => {
 
   }, [audios]);
 
-  // Updating project in database properly
-
-  useEffect(() => {
-
-    project.audioFiles = audioFiles;
-    saveProject(project.id, project);
-
-  })
-
   return (
 
     <div className='station'>
@@ -190,19 +208,6 @@ const Station = () => {
           {Object.keys(audios).length > 0 && (
 
             <div>
-
-                {/* {audioFiles.map((file, index) => (
-
-                  <div className='file' key={index}>{file.name}
-
-                  <div className="progress-bar-container">
-
-                    <div className="progress-bar" style={{ width: `${file.progress}%` }}/>
-
-                  </div>
-                  
-                  </div>
-                )); */}
                 
                 {Object.keys(audios).map((fileName, index) => (
 

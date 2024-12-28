@@ -35,7 +35,9 @@ const ProjectListItemOptions = ({ selectedProjects }) => {
         try {
 
             const projectData = await fetchProjectByID(Number(Object.keys(selectedProjects)[0]));
-            navigate('/station', { state: { project: projectData } });
+            // navigate('/station', { state: { project: projectData } });
+            localStorage.setItem('project', JSON.stringify(projectData));
+            navigate('/station');
 
         }
         catch (error) {
