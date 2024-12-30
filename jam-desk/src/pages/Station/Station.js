@@ -208,6 +208,8 @@ const Station = () => {
 
       <Header/>
 
+      <div className='project-name'>{project.name}</div>
+
       <div className='files'>Files</div>
       <List onSelectionChange={onSelectionChange} size="medium" listItems={Object.entries(audioFiles)} type={"station"}/>
 

@@ -14,7 +14,7 @@ const ProjectListItem = ({ onSelectionChange, listItem }) => {
 
     return (
 
-        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem.name}, {listItem.id} </div>
+        <div className={`list-item ${selected ? 'clicked' : ''}`} onClick={handleSelect}> {listItem.name} </div>
 
     )
 
