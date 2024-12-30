@@ -14,9 +14,22 @@ const ProjectListItemOptions = ({ selectedProjects }) => {
 
         setClicked(index);
 
+        // Open
         if (index === 0) {
 
             handleOpenPress();
+
+        }
+        // Delete
+        else if (index === 1) {
+
+            handleDeletePress();
+
+        }
+        // Add to folder
+        else if (index === 2) {
+
+
 
         }
 
@@ -47,6 +60,14 @@ const ProjectListItemOptions = ({ selectedProjects }) => {
         }
 
     }   
+
+    // Handling deleting a project
+
+    const handleDeletePress = () => {
+
+        
+
+    }
 
     const options = ['Open', 'Delete', 'Add to Folder'];
 
